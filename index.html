@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Andrea & Daniel — Wedding Invitation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="cover" class="cover">
+  <div class="cover-card">
+    <div class="small">THE WEDDING OF</div>
+    <h1 id="coverNames">Andrea & Daniel</h1>
+    <p id="coverDate">December 12, 2026 · 1:00 PM</p>
+    <button id="openBtn">💌 Open Invitation</button>
+  </div>
+</div>
+
+<header class="hero">
+  <button class="music" id="musicBtn">♫ Play Song</button>
+  <div class="hero-inner">
+    <div class="small">WE ARE GETTING MARRIED</div>
+    <h1 id="names">Andrea & Daniel</h1>
+    <p id="date">December 12, 2026 · 1:00 PM</p>
+  </div>
+</header>
+
+<main>
+<section class="card">
+  <div class="small">WITH LOVE</div>
+  <h2>You're Invited</h2>
+  <p id="message"></p>
+</section>
+
+<section class="card">
+  <div class="small">OUR DAY</div>
+  <h2>Wedding Details</h2>
+  <div class="details">
+    <div><b>📅 Date</b><span id="date2"></span></div>
+    <div><b>📍 Ceremony</b><span id="venue"></span></div>
+    <div><b>🎉 Reception</b><span id="reception"></span></div>
+  </div>
+  <a id="maps" class="button" target="_blank" rel="noopener">Open Google Maps</a>
+</section>
+
+<section class="card">
+  <div class="small">COUNTDOWN</div>
+  <h2>Until We Say “I Do”</h2>
+  <div class="countdown">
+    <div><strong id="days">0</strong><span>Days</span></div>
+    <div><strong id="hours">0</strong><span>Hours</span></div>
+    <div><strong id="minutes">0</strong><span>Minutes</span></div>
+    <div><strong id="seconds">0</strong><span>Seconds</span></div>
+  </div>
+</section>
+
+<section class="card">
+  <div class="small">OUR STORY</div>
+  <h2 id="storyTitle">A Little Story</h2>
+  <p id="story"></p>
+</section>
+
+<section class="card">
+  <div class="small">DRESS CODE</div>
+  <h2>What to Wear</h2>
+  <p id="dress"></p>
+</section>
+
+<section class="card">
+  <div class="small">GALLERY</div>
+  <h2>Our Moments</h2>
+  <div id="gallery" class="gallery"></div>
+</section>
+
+<section class="card center">
+  <h2>Thank You</h2>
+  <p>We can't wait to celebrate this beautiful day with you.</p>
+</section>
+</main>
+
+<footer>Andrea & Daniel · With love</footer>
+
+<audio id="audio" loop></audio>
+<script src="script.js"></script>
+</body>
+</html>

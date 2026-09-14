@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wedding Admin</title><link rel="stylesheet" href="style.css"><style>.admin{max-width:800px;margin:30px auto;padding:20px}.panel{background:#fffdf8;padding:30px;border-radius:20px;box-shadow:0 8px 30px #0001}label{display:block;margin-top:15px;font-weight:bold}input,textarea{width:100%;padding:12px;border:1px solid #ccd2c9;border-radius:10px;margin-top:6px;font:inherit}textarea{min-height:100px}.row{display:grid;grid-template-columns:1fr 1fr;gap:15px}.save{margin-top:22px}.hidden{display:none}.login{max-width:430px;margin:80px auto}@media(max-width:650px){.row{grid-template-columns:1fr}}</style></head>
+<body><div class="admin">
+<div id="login" class="panel login"><h2>🔒 Admin Login</h2><p>Sample demo password: <b>Wedding2026!</b></p><label>Password<input id="pw" type="password"></label><button class="button" onclick="login()">Login</button><p id="err"></p></div>
+<div id="editor" class="panel hidden"><h2>💍 Wedding Admin</h2><p>Only the admin page is intended for editing. Save changes, then open the invitation to preview.</p>
+<div class="row"><div><label>Bride<input id="bride"></label></div><div><label>Groom<input id="groom"></label></div></div>
+<div class="row"><div><label>Date<input id="date" placeholder="December 12, 2026"></label></div><div><label>Time<input id="time" placeholder="1:00 PM"></label></div></div>
+<label>Venue<input id="venue"></label><label>Reception<input id="reception"></label><label>Google Maps link<input id="maps"></label>
+<label>Invitation message<textarea id="message"></textarea></label><label>Our story<textarea id="story"></textarea></label><label>Dress code<textarea id="dress"></textarea></label><label>Wedding Song MP3 URL<input id="song"></label>
+<label>Gallery image URLs (one per line)<textarea id="photos"></textarea></label>
+<button class="button save" onclick="save()">💾 Save Changes</button> <button class="button" onclick="logout()">Logout</button>
+<p id="saved"></p><a class="button" href="index.html">View Invitation</a></div></div>
+<script>
+const keys=["bride","groom","date","time","venue","reception","maps","message","story","dress","song"];
+const defaults={bride:"Andrea Marie Santos",groom:"Daniel Miguel Reyes",date:"December 12, 2026",time:"1:00 PM",venue:"4 Kings Event Center, Uptown, Regatta Square, Pueblo, Cagayan de Oro, Philippines",reception:"4 Kings Event Center",maps:"https://www.google.com/maps/search/?api=1&query=4+Kings+Event+Center+Cagayan+de+Oro",message:"With joyful hearts, we invite you to witness and celebrate the beginning of our forever. Your presence will make our special day even more meaningful.",story:"Our story began with a simple hello and grew into countless memories, laughter, dreams, and prayers. Now we are excited to take the next beautiful step together as husband and wife.",dress:"Formal attire. We kindly encourage our guests to wear Sage Green & Khaki tones.",song:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",photos:["https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=80"]};
+function login(){if($("pw").value==="Wedding2026!"){$("login").classList.add("hidden");$("editor").classList.remove("hidden");load()}else $("err").textContent="Incorrect password."}
+function load(){let d=JSON.parse(localStorage.getItem("weddingData")||"null")||defaults;keys.forEach(k=>$(k).value=d[k]||"");$("photos").value=(d.photos||[]).join("\\n")}
+function save(){let d={};keys.forEach(k=>d[k]=$(k).value.trim());d.photos=$("photos").value.split("\\n").map(x=>x.trim()).filter(Boolean);localStorage.setItem("weddingData",JSON.stringify(d));$("saved").textContent="✓ Saved on this browser."}
+function logout(){$("editor").classList.add("hidden");$("login").classList.remove("hidden");$("pw").value=""}
+const $=id=>document.getElementById(id);
+</script></body></html>
